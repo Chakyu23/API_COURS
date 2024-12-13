@@ -15,5 +15,8 @@
     "url": "https://github.com/Chakyu23/API_COURS/issues"
   },
   "homepage": "https://github.com/Chakyu23/API_COURS#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
