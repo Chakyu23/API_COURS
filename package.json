@@ -1,0 +1,19 @@
+{
+  "name": "api_site_marchand",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chakyu23/API_COURS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chakyu23/API_COURS/issues"
+  },
+  "homepage": "https://github.com/Chakyu23/API_COURS#readme",
+  "description": ""
+}
