@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Type_PieceJointe(sequelize, DataTypes) {
-  return sequelize.define('Type_PieceJointe', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Type_PieceJointe = DB_Main.define('Type_PieceJointe', {
     IdTypePJ: {
       type: DataTypes.TINYINT,
       allowNull: false,
@@ -11,7 +11,7 @@ export function _Type_PieceJointe(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Type_PieceJointe',
     schema: 'Sch_Msg',
     timestamps: false,
@@ -32,4 +32,4 @@ export function _Type_PieceJointe(sequelize, DataTypes) {
       },
     ]
   });
-};
+

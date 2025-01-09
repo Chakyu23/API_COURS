@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Rayon(sequelize, DataTypes) {
-  return sequelize.define('Rayon', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Rayon = DB_Main.define('Rayon', {
     idRayon: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,7 +15,7 @@ export function _Rayon(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Rayon',
     schema: 'Sch_Art',
     timestamps: false,
@@ -42,4 +42,4 @@ export function _Rayon(sequelize, DataTypes) {
       },
     ]
   });
-};
+

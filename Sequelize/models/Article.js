@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Article(sequelize, DataTypes) {
-  return sequelize.define('Article', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Article = DB_Main.define('Article', {
     IdArticle: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -43,7 +43,7 @@ export function _Article(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Article',
     schema: 'Sch_Art',
     timestamps: false,
@@ -70,4 +70,4 @@ export function _Article(sequelize, DataTypes) {
       },
     ]
   });
-};
+

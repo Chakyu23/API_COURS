@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Fournisseur(sequelize, DataTypes) {
-  return sequelize.define('Fournisseur', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Fournisseur = DB_Main.define('Fournisseur', {
     IdFourn: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -43,7 +43,7 @@ export function _Fournisseur(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Fournisseur',
     schema: 'Sch_Fourn',
     timestamps: false,
@@ -71,4 +71,4 @@ export function _Fournisseur(sequelize, DataTypes) {
       },
     ]
   });
-};
+

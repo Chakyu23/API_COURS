@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Possede(sequelize, DataTypes) {
-  return sequelize.define('Possede', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Possede = DB_Main.define('Possede', {
     IdProduit: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,7 +20,7 @@ export function _Possede(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+    DB_Main,
     tableName: 'Possede',
     schema: 'Sch_Art',
     timestamps: false,
@@ -35,4 +35,4 @@ export function _Possede(sequelize, DataTypes) {
       },
     ]
   });
-};
+

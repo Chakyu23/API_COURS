@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _CDE_Ligne(sequelize, DataTypes) {
-  return sequelize.define('CDE_Ligne', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const CDE_Ligne = DB_Main.define('CDE_Ligne', {
     IdLigCde: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,7 +27,7 @@ export function _CDE_Ligne(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'CDE_Ligne',
     schema: 'Sch_Cde',
     timestamps: false,
@@ -41,4 +41,3 @@ export function _CDE_Ligne(sequelize, DataTypes) {
       },
     ]
   });
-};

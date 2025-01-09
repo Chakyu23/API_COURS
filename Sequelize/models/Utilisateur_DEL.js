@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Utilisateur_DEL(sequelize, DataTypes) {
-  return sequelize.define('Utilisateur_DEL', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Utilisateur_DEL = DB_Main.define('Utilisateur_DEL', {
     IdUtilisateur: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -47,7 +47,7 @@ export function _Utilisateur_DEL(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Utilisateur_DEL',
     schema: 'Sch_User',
     timestamps: false,
@@ -61,4 +61,4 @@ export function _Utilisateur_DEL(sequelize, DataTypes) {
       },
     ]
   });
-};
+

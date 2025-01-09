@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Produit(sequelize, DataTypes) {
-  return sequelize.define('Produit', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Produit = DB_Main.define('Produit', {
     IdProduit: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -39,7 +39,7 @@ export function _Produit(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+    DB_Main,
     tableName: 'Produit',
     schema: 'Sch_Art',
     timestamps: false,
@@ -65,4 +65,4 @@ export function _Produit(sequelize, DataTypes) {
       },
     ]
   });
-};
+

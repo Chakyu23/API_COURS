@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Marque(sequelize, DataTypes) {
-  return sequelize.define('Marque', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Marque = DB_Main.define('Marque', {
     IdMarque: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -11,7 +11,7 @@ export function _Marque(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Marque',
     schema: 'Sch_Art',
     timestamps: false,
@@ -31,4 +31,3 @@ export function _Marque(sequelize, DataTypes) {
       },
     ]
   });
-};

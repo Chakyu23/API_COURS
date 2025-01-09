@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _BonLiv(sequelize, DataTypes) {
-  return sequelize.define('BonLiv', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const BonLiv = DB_Main.define('BonLiv', {
     IdBL: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -59,7 +59,7 @@ export function _BonLiv(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'BonLiv',
     schema: 'Sch_Cde',
     timestamps: false,
@@ -80,4 +80,4 @@ export function _BonLiv(sequelize, DataTypes) {
       },
     ]
   });
-};
+

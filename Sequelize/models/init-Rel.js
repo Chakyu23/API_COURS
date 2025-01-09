@@ -1,61 +1,26 @@
-import {DataTypes} from 'sequelize';
-import {_Article} from './Article.js';
-import {_Article_DEL} from './Article_DEL.js';
-import {_BL_Ligne} from './BL_Ligne.js';
-import {_BL_Ligne_DEL} from './BL_Ligne_DEL.js';
-import {_BonLiv} from './BonLiv.js';
-import {_BonLiv_DEL} from './BonLiv_DEL.js';
-import {_CDE_Ligne} from './CDE_Ligne.js';
-import {_Caracteristique} from './Caracteristique.js';
-import {_Commande} from './Commande.js';
-import {_Fournisseur} from './Fournisseur.js';
-import {_Fournisseur_DEL} from './Fournisseur_DEL.js';
-import {_Groupe} from './Groupe.js';
-import {_MSG} from './MSG.js';
-import {_MSG_DEL} from './MSG_DEL.js';
-import {_MSG_PieceJointe} from './MSG_PieceJointe.js';
-import {_MSG_Salon} from './MSG_Salon.js';
-import {_Marque} from './Marque.js';
-import {_Possede} from './Possede.js';
-import {_Produit} from './Produit.js';
-import {_Produit_DEL} from './Produit_DEL.js';
-import {_Rayon} from './Rayon.js';
-import {_TVA} from './TVA.js';
-import {_Type_Caracteristique} from './Type_Caracteristique.js';
-import {_Type_PieceJointe} from './Type_PieceJointe.js';
-import {_Utilisateur} from './Utilisateur.js';
-import {_Utilisateur_DEL} from './Utilisateur_DEL.js';
-import {_Ville} from './Ville.js';
+import {Produit} from "./Produit.js";
+import {MSG_PieceJointe} from "./MSG_PieceJointe.js";
+import {Caracteristique} from "./Caracteristique.js";
+import {Article} from "./Article.js";
+import {Possede} from "./Possede.js";
+import {Marque} from "./Marque.js";
+import {CDE_Ligne} from "./CDE_Ligne.js";
+import {MSG_Salon} from "./MSG_Salon.js";
+import {Rayon} from "./Rayon.js";
+import {TVA} from "./TVA.js";
+import {Type_Caracteristique} from "./Type_Caracteristique.js";
+import {BL_Ligne} from "./BL_Ligne.js";
+import {BonLiv} from "./BonLiv.js";
+import {Commande} from "./Commande.js";
+import {Fournisseur} from "./Fournisseur.js";
+import {MSG} from "./MSG.js";
+import {Type_PieceJointe} from "./Type_PieceJointe.js";
+import {Utilisateur} from "./Utilisateur.js";
+import {Groupe} from "./Groupe.js";
+import {Ville} from "./Ville.js";
 
-export function initModels(sequelize) {
-  const Article = _Article(sequelize, DataTypes);
-  const Article_DEL = _Article_DEL(sequelize, DataTypes);
-  const BL_Ligne = _BL_Ligne(sequelize, DataTypes);
-  const BL_Ligne_DEL = _BL_Ligne_DEL(sequelize, DataTypes);
-  const BonLiv = _BonLiv(sequelize, DataTypes);
-  const BonLiv_DEL = _BonLiv_DEL(sequelize, DataTypes);
-  const CDE_Ligne = _CDE_Ligne(sequelize, DataTypes);
-  const Caracteristique = _Caracteristique(sequelize, DataTypes);
-  const Commande = _Commande(sequelize, DataTypes);
-  const Fournisseur = _Fournisseur(sequelize, DataTypes);
-  const Fournisseur_DEL = _Fournisseur_DEL(sequelize, DataTypes);
-  const Groupe = _Groupe(sequelize, DataTypes);
-  const MSG = _MSG(sequelize, DataTypes);
-  const MSG_DEL = _MSG_DEL(sequelize, DataTypes);
-  const MSG_PieceJointe = _MSG_PieceJointe(sequelize, DataTypes);
-  const MSG_Salon = _MSG_Salon(sequelize, DataTypes);
-  const Marque = _Marque(sequelize, DataTypes);
-  const Possede = _Possede(sequelize, DataTypes);
-  const Produit = _Produit(sequelize, DataTypes);
-  const Produit_DEL = _Produit_DEL(sequelize, DataTypes);
-  const Rayon = _Rayon(sequelize, DataTypes);
-  const TVA = _TVA(sequelize, DataTypes);
-  const Type_Caracteristique = _Type_Caracteristique(sequelize, DataTypes);
-  const Type_PieceJointe = _Type_PieceJointe(sequelize, DataTypes);
-  const Utilisateur = _Utilisateur(sequelize, DataTypes);
-  const Utilisateur_DEL = _Utilisateur_DEL(sequelize, DataTypes);
-  const Ville = _Ville(sequelize, DataTypes);
 
+export function initRel() {
   Caracteristique.belongsToMany(Produit, { as: 'IdProduit_Produits', through: Possede, foreignKey: "idCaracteristique", otherKey: "IdProduit" });
   Produit.belongsToMany(Caracteristique, { as: 'idCaracteristique_Caracteristiques', through: Possede, foreignKey: "IdProduit", otherKey: "idCaracteristique" });
   Produit.belongsTo(Article, { as: "IdArticle_Article", foreignKey: "IdArticle"});
@@ -115,33 +80,4 @@ export function initModels(sequelize) {
   Utilisateur.belongsTo(Ville, { as: "IdVille_Ville", foreignKey: "IdVille"});
   Ville.hasMany(Utilisateur, { as: "Utilisateurs", foreignKey: "IdVille"});
 
-  return {
-    Article,
-    Article_DEL,
-    BL_Ligne,
-    BL_Ligne_DEL,
-    BonLiv,
-    BonLiv_DEL,
-    CDE_Ligne,
-    Caracteristique,
-    Commande,
-    Fournisseur,
-    Fournisseur_DEL,
-    Groupe,
-    MSG,
-    MSG_DEL,
-    MSG_PieceJointe,
-    MSG_Salon,
-    Marque,
-    Possede,
-    Produit,
-    Produit_DEL,
-    Rayon,
-    TVA,
-    Type_Caracteristique,
-    Type_PieceJointe,
-    Utilisateur,
-    Utilisateur_DEL,
-    Ville,
-  };
 }

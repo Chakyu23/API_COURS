@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Groupe(sequelize, DataTypes) {
-  return sequelize.define('Groupe', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Groupe = DB_Main.define('Groupe', {
     IdGroupe: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,7 +15,7 @@ export function _Groupe(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+    DB_Main,
     tableName: 'Groupe',
     schema: 'Sch_User',
     timestamps: false,
@@ -36,4 +36,4 @@ export function _Groupe(sequelize, DataTypes) {
       },
     ]
   });
-};
+

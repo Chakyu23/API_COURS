@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _BL_Ligne(sequelize, DataTypes) {
-  return sequelize.define('BL_Ligne', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const BL_Ligne = DB_Main.define('BL_Ligne', {
     IdLigBL: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -31,7 +31,7 @@ export function _BL_Ligne(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'BL_Ligne',
     schema: 'Sch_Cde',
     timestamps: false,
@@ -52,4 +52,4 @@ export function _BL_Ligne(sequelize, DataTypes) {
       },
     ]
   });
-};
+

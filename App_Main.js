@@ -7,8 +7,7 @@ import {RouterOrders} from "./router/RouterOrders.js";
 import {RouterMessages} from "./router/RouterMessages.js";
 import {RouterDeliveryTours} from "./router/RouterDeliveryTour.js";
 import {RouterAssignmentRequests} from "./router/RouterAssignmentRequests.js";
-import {RouterLogin} from "./router/RouterLogin.js";
-import {initModels} from "./Sequelize/models/init-models.js";
+import {initRel} from "./Sequelize/models/init-Rel.js";
 
 
 const app = express();
@@ -21,9 +20,8 @@ app.use(RouterOrders);
 app.use(RouterMessages);
 app.use(RouterDeliveryTours);
 app.use(RouterAssignmentRequests);
-app.use(RouterLogin);
 
-initModels(DB_Main);
+initRel();
 
 try {
     await DB_Main.authenticate();

@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Type_Caracteristique(sequelize, DataTypes) {
-  return sequelize.define('Type_Caracteristique', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Type_Caracteristique = DB_Main.define('Type_Caracteristique', {
     IdTypeCara: {
       type: DataTypes.SMALLINT,
       allowNull: false,
@@ -11,7 +11,7 @@ export function _Type_Caracteristique(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Type_Caracteristique',
     schema: 'Sch_Art',
     timestamps: false,
@@ -32,4 +32,4 @@ export function _Type_Caracteristique(sequelize, DataTypes) {
       },
     ]
   });
-};
+

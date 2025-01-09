@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _MSG_DEL(sequelize, DataTypes) {
-  return sequelize.define('MSG_DEL', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const MSG_DEL = DB_Main.define('MSG_DEL', {
     IdMsg: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -19,7 +19,7 @@ export function _MSG_DEL(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'MSG_DEL',
     schema: 'Sch_Msg',
     timestamps: false,
@@ -33,4 +33,3 @@ export function _MSG_DEL(sequelize, DataTypes) {
       },
     ]
   });
-};

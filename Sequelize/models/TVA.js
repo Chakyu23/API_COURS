@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _TVA(sequelize, DataTypes) {
-  return sequelize.define('TVA', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const TVA = DB_Main.define('TVA', {
     IdTVA: {
       type: DataTypes.TINYINT,
       allowNull: false,
@@ -15,7 +15,7 @@ export function _TVA(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    sequelize,
+    DB_Main,
     tableName: 'TVA',
     schema: 'Sch_Art',
     timestamps: false,
@@ -29,4 +29,4 @@ export function _TVA(sequelize, DataTypes) {
       },
     ]
   });
-};
+

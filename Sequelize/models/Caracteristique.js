@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Caracteristique(sequelize, DataTypes) {
-  return sequelize.define('Caracteristique', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Caracteristique = DB_Main.define('Caracteristique', {
     idCaracteristique: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,7 +23,7 @@ export function _Caracteristique(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Caracteristique',
     schema: 'Sch_Art',
     timestamps: false,
@@ -43,4 +43,3 @@ export function _Caracteristique(sequelize, DataTypes) {
       },
     ]
   });
-};

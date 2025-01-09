@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _MSG_Salon(sequelize, DataTypes) {
-  return sequelize.define('MSG_Salon', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const MSG_Salon = DB_Main.define('MSG_Salon', {
     IdSalon: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -19,7 +19,7 @@ export function _MSG_Salon(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'MSG_Salon',
     schema: 'Sch_Msg',
     timestamps: false,
@@ -40,4 +40,3 @@ export function _MSG_Salon(sequelize, DataTypes) {
       },
     ]
   });
-};

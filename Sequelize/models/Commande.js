@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-export function _Commande(sequelize, DataTypes) {
-  return sequelize.define('Commande', {
+import {DataTypes} from 'sequelize';
+import {DB_Main} from "../DB_Main.js";
+export const Commande = DB_Main.define('Commande', {
     IdCde: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,7 +23,7 @@ export function _Commande(sequelize, DataTypes) {
       }
     }
   }, {
-    sequelize,
+  DB_Main,
     tableName: 'Commande',
     schema: 'Sch_Cde',
     timestamps: false,
@@ -37,4 +37,4 @@ export function _Commande(sequelize, DataTypes) {
       },
     ]
   });
-};
+
