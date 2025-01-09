@@ -5,13 +5,64 @@ import {jwtMiddleware} from "../Middle_Jwt.js";
 
 export const RouterUsers = express.Router();
 
-RouterUsers.use('/users', jwtMiddleware, async(req, res) => {
+// GET - /users
+RouterUsers.get('/users', jwtMiddleware, async(req, res) => {
     try {
         const pool = await sql.connect(dbConfig);
         const data = pool.request().query(`SELECT * FROM Sch_User.Utilisateur`);
         data.then(result=>{
             return res.json(result);
         })
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// POST - /users
+RouterUsers.post('/users', jwtMiddleware, async(req, res) => {
+    try {
+
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// GET - /users/{role}
+RouterUsers.get('/users/:RoleID', jwtMiddleware, async(req, res) => {
+    try {
+        const { RoleID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// GET - /users/{id}
+RouterUsers.get('/users/:userID', jwtMiddleware, async(req, res) => {
+    try {
+        const { userID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// PUT - /users/{id}
+RouterUsers.put('/users/:userID', jwtMiddleware, async(req, res) => {
+    try {
+        const { userID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// DELETE - /users/{id}
+RouterUsers.delete('/users/:userID', jwtMiddleware, async(req, res) => {
+    try {
+        const { userID } = req.params;
     }
     catch(err) {
         console.log(err);
