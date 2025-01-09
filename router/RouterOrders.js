@@ -2,12 +2,12 @@ import express from 'express';
 import sql from "mssql";
 import { dbConfig } from "../Src/Db.js";
 
-export const RouterUsers = express.Router();
+export const RouterOrders = express.Router();
 
-RouterUsers.use('/users', async(req, res) => {
+RouterOrders.use('/orders', async(req, res) => {
     try {
         const pool = await sql.connect(dbConfig);
-        const data = pool.request().query(`SELECT * FROM Sch_User.Utilisateur`);
+        const data = pool.request().query(`SELECT * FROM Sch_Cde.Commande`);
         data.then(result=>{
             return res.json(result);
         })

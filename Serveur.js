@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { RouterUser } from './router/RouterUsers.js';
+import { RouterUsers } from './router/RouterUsers.js';
 
 const app = express();
 app.use(cors());
-app.use(RouterUser)
+app.use(RouterUsers)
 
 app.use('/', (req, res)=> {
     return res.json("I'm the backend !");
