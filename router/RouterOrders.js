@@ -1,10 +1,11 @@
 import express from 'express';
 import sql from "mssql";
 import { dbConfig } from "../Db.js";
+import {jwtMiddleware} from "../Middle_Jwt.js";
 
 export const RouterOrders = express.Router();
 
-RouterOrders.use('/orders', async(req, res) => {
+RouterOrders.use('/orders', jwtMiddleware, async(req, res) => {
     try {
         const pool = await sql.connect(dbConfig);
         const data = pool.request().query(`SELECT * FROM Sch_Cde.Commande`);

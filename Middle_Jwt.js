@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
-const {JWT_SECRET_KEY} = require("./Src/Key.js");
+import jwt from 'jsonwebtoken';
+import {JWT_SECRET_KEY} from "./Src/Key.js";
 
 // Clé secrète utilisée pour signer et vérifier le JWT (changez cette clé par sécurité)
 const SECRET_KEY = JWT_SECRET_KEY;
 
-const jwtMiddleware = (req, res, next) => {
+export const jwtMiddleware = (req, res, next) => {
     // Récupérer le token de l'en-tête Authorization
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]; // "Bearer <token>"
@@ -26,5 +26,3 @@ const jwtMiddleware = (req, res, next) => {
         return res.status(403).json({ message: 'Token invalide.' });
     }
 };
-
-module.exports = jwtMiddleware;
