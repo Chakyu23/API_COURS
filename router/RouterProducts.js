@@ -1,6 +1,6 @@
 import express from 'express';
 import sql from "mssql";
-import { dbConfig } from "../Src/Db.js";
+import { dbConfig } from "../Db.js";
 
 export const RouterProducts = express.Router();
 
