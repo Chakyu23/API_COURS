@@ -1,6 +1,6 @@
 import express from 'express';
 import sql from "mssql";
-import { dbConfig } from "../Db.js";
+import { DB_Main } from "../Sequelize/DB_Main.js";
 import {PERSONAL_MESSAGE_ID} from "../Const.js";
 import {jwtMiddleware} from "../Middle_Jwt.js";
 

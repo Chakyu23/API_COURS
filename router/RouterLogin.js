@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from 'jsonwebtoken';
 import sql from "mssql";
-import { dbConfig } from "../Db.js";
+import { DB_Main } from "../Sequelize/DB_Main.js";
 import {JWT_SECRET_KEY} from "../Src/Key.js";
 
 export const RouterLogin = express.Router();

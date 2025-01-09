@@ -1,6 +1,6 @@
 import express from 'express';
 import sql from "mssql";
-import { dbConfig } from "../Db.js";
+import { DB_Main } from "../Sequelize/DB_Main.js";
 import {jwtMiddleware} from "../Middle_Jwt.js";
 
 export const RouterProducts = express.Router();
@@ -8,11 +8,11 @@ export const RouterProducts = express.Router();
 // GET - /products
 RouterProducts.get('/products', jwtMiddleware, async(req, res) => {
     try {
-        const pool = await sql.connect(dbConfig);
-        const data = pool.request().query(`SELECT * FROM Sch_Art.Produit`);
-        data.then(result=>{
-            return res.json(result);
-        })
+        // const pool = await sql.connect(DB_Main);
+        // const data = pool.request().query(`SELECT * FROM Sch_Art.Produit`);
+        // data.then(result=>{
+        //     return res.json(result);
+        // })
     }
     catch(err) {
         console.log(err);
