@@ -58,3 +58,54 @@ RouterProducts.delete('/products/:productID', jwtMiddleware, async(req, res) => 
         console.log(err);
     }
 });
+
+// Commentaire
+// POST - /products/{id}/comments
+RouterProducts.post('/products/:productID/comments', jwtMiddleware, async(req, res) => {
+    try {
+        const { productID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// POST - /products/{id}/comments
+RouterProducts.get('/products/:productID/comments', jwtMiddleware, async(req, res) => {
+    try {
+        const { productID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// GET - /products/{id}/comments/{id}
+RouterProducts.get('/products/:productID/comments/:commentID', jwtMiddleware, async(req, res) => {
+    try {
+        const { productID, commentID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// PUT - /products/{id}/comments/{id}
+RouterProducts.put('/products/:productID/comments/:commentID', jwtMiddleware, async(req, res) => {
+    try {
+        const { productID, commentID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
+
+// DELETE - /products/{id}/comments/{id}
+RouterProducts.delete('/products/:productID/comments/:commentID', jwtMiddleware, async(req, res) => {
+    try {
+        const { productID, commentID } = req.params;
+    }
+    catch(err) {
+        console.log(err);
+    }
+});
