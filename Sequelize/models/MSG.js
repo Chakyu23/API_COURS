@@ -37,6 +37,14 @@ export const MSG = DB_Main.define('MSG', {
     Suppr: {
         type: DataTypes.BOOLEAN,
         allowNull: true
+    },
+    IdProduit: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'Produit',
+            key: 'IdProduit'
+        }
     }
   }, {
   DB_Main,

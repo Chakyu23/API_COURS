@@ -5,7 +5,6 @@ import {Article} from "./Article.js";
 import {Possede} from "./Possede.js";
 import {Marque} from "./Marque.js";
 import {CDE_Ligne} from "./CDE_Ligne.js";
-import {MSG_Salon} from "./MSG_Salon.js";
 import {Rayon} from "./Rayon.js";
 import {TVA} from "./TVA.js";
 import {Type_Caracteristique} from "./Type_Caracteristique.js";
@@ -31,8 +30,8 @@ export function initRel() {
   Produit.hasMany(Possede, { as: "Possedes", foreignKey: "IdProduit"});
   CDE_Ligne.belongsTo(Produit, { as: "IdProduit_Produit", foreignKey: "IdProduit"});
   Produit.hasMany(CDE_Ligne, { as: "CDE_Lignes", foreignKey: "IdProduit"});
-  MSG_Salon.belongsTo(Produit, { as: "IdProduit_Produit", foreignKey: "IdProduit"});
-  Produit.hasMany(MSG_Salon, { as: "MSG_Salons", foreignKey: "IdProduit"});
+  MSG.belongsTo(Produit, { as: "IdProduit_Produit", foreignKey: "IdProduit"});
+  Produit.hasMany(MSG, { as: "MSG", foreignKey: "IdProduit"});
   Article.belongsTo(Rayon, { as: "idRayon_Rayon", foreignKey: "idRayon"});
   Rayon.hasMany(Article, { as: "Articles", foreignKey: "idRayon"});
   Article.belongsTo(TVA, { as: "IdTVA_TVA", foreignKey: "IdTVA"});
@@ -51,8 +50,6 @@ export function initRel() {
   Fournisseur.hasMany(Produit, { as: "Produits", foreignKey: "IdFourn"});
   MSG_PieceJointe.belongsTo(MSG, { as: "IdMsg_MSG", foreignKey: "IdMsg"});
   MSG.hasMany(MSG_PieceJointe, { as: "MSG_PieceJointes", foreignKey: "IdMsg"});
-  MSG.belongsTo(MSG_Salon, { as: "IdSalon_MSG_Salon", foreignKey: "IdSalon"});
-  MSG_Salon.hasMany(MSG, { as: "MSGs", foreignKey: "IdSalon"});
   MSG_PieceJointe.belongsTo(Type_PieceJointe, { as: "IdTypePJ_Type_PieceJointe", foreignKey: "IdTypePJ"});
   Type_PieceJointe.hasMany(MSG_PieceJointe, { as: "MSG_PieceJointes", foreignKey: "IdTypePJ"});
   Utilisateur.belongsTo(Groupe, { as: "IdGroupe_Groupe", foreignKey: "IdGroupe"});
