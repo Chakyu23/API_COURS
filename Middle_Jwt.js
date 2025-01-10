@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
-require("dotenv").config()
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const jwtMiddleware = (req, res, next) => {
     // Récupérer le token de l'en-tête Authorization

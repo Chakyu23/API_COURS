@@ -3,7 +3,9 @@ import {jwtMiddleware} from "../Middle_Jwt.js";
 import jwt from "jsonwebtoken";
 import {Utilisateur} from "../Sequelize/models/Utilisateur.js";
 import bcrypt from "bcrypt";
-require("dotenv").config()
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const RouterUsers = express.Router();
 

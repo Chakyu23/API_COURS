@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
-require("dotenv").config()
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const DB_Main = new Sequelize(process.env.DB_CREDENTIAL_DATABASE, process.env.DB_CREDENTIAL_USER, process.env.DB_CREDENTIAL_PASSWORD, {
     host: process.env.DB_CREDENTIAL_SERVEUR,
