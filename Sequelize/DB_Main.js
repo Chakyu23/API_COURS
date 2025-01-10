@@ -1,9 +1,8 @@
 import Sequelize from 'sequelize';
-import {DB_CREDENTIAL} from "../Src/Key.js";
 
-export const DB_Main = new Sequelize(DB_CREDENTIAL.database, DB_CREDENTIAL.user, DB_CREDENTIAL.password, {
-    host: DB_CREDENTIAL.server,
-    port: DB_CREDENTIAL.port,
+export const DB_Main = new Sequelize(process.env.DB_CREDENTIAL_DATABASE, process.env.DB_CREDENTIAL_USER, process.env.DB_CREDENTIAL_PASSWORD, {
+    host: process.env.DB_CREDENTIAL_SERVEUR,
+    port: process.env.DB_CREDENTIAL_PORT,
     dialect: 'mssql'
 });
 

@@ -1,7 +1,6 @@
 import express from 'express';
 import {jwtMiddleware} from "../Middle_Jwt.js";
 import jwt from "jsonwebtoken";
-import {JWT_SECRET_KEY, SAL_KEY} from "../Src/Key.js";
 import {Utilisateur} from "../Sequelize/models/Utilisateur.js";
 import bcrypt from "bcrypt";
 
@@ -17,7 +16,7 @@ RouterUsers.post('/login', (req, res) => {
             // Créer un token
             const token = jwt.sign(
                 { name: username }, // Payload
-                JWT_SECRET_KEY,         // Clé secrète
+                process.env.JWT_SECRET_KEY,         // Clé secrète
                 { expiresIn: '1h' } // Options (ex. expiration)
             );
 
@@ -46,20 +45,21 @@ RouterUsers.post('/users', jwtMiddleware, async(req, res) => {
     try {
         const {Nom, Prenom, NumTelephone, Email, AddresseFact, AddresseLivr, Login, Mdp, Ville, IdGroupe} = req.body;
 
-        bcrypt.genSalt(saltRounds, (err, salt) => {
+        bcrypt.genSalt(process.env.SALT_ROUNDS, (err, salt) => {
             if (err) {
                 return res.status(501).json(err);
             }
+            let Salted_MDP = ""
+            bcrypt.hash(Mdp, salt, (err, hash) => {
+                if (err) {
+                    // Handle error
+                    return res.status(501).json(err);
+                }
+                Salted_MDP = hash;
+            });
         });
 
-        let Salted_MDP = ""
-        bcrypt.hash(Mdp, salt, (err, hash) => {
-            if (err) {
-                // Handle error
-                return res.status(501).json(err);
-            }
-            Salted_MDP = hash;
-        });
+
 
 
 

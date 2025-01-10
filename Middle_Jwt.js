@@ -1,8 +1,4 @@
 import jwt from 'jsonwebtoken';
-import {JWT_SECRET_KEY} from "./Src/Key.js";
-
-// Clé secrète utilisée pour signer et vérifier le JWT (changez cette clé par sécurité)
-const SECRET_KEY = JWT_SECRET_KEY;
 
 export const jwtMiddleware = (req, res, next) => {
     // Récupérer le token de l'en-tête Authorization
@@ -15,7 +11,7 @@ export const jwtMiddleware = (req, res, next) => {
 
     try {
         // Vérifier le token
-        const payload = jwt.verify(token, SECRET_KEY);
+        const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
         // Ajouter les informations du token au req pour les routes suivantes
         req.user = payload;
