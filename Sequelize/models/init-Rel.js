@@ -17,8 +17,6 @@ import {MSG} from "./MSG.js";
 import {Type_PieceJointe} from "./Type_PieceJointe.js";
 import {Utilisateur} from "./Utilisateur.js";
 import {Groupe} from "./Groupe.js";
-import {Ville} from "./Ville.js";
-
 
 export function initRel() {
   Caracteristique.belongsToMany(Produit, { as: 'IdProduit_Produits', through: Possede, foreignKey: "idCaracteristique", otherKey: "IdProduit" });
@@ -75,9 +73,4 @@ export function initRel() {
   Utilisateur.hasMany(MSG, { as: "MSGs", foreignKey: "IdUtilisateur"});
   MSG.belongsTo(Utilisateur, { as: "IdReception_Utilisateur", foreignKey: "IdReception"});
   Utilisateur.hasMany(MSG, { as: "IdReception_MSGs", foreignKey: "IdReception"});
-  Fournisseur.belongsTo(Ville, { as: "IdVille_Ville", foreignKey: "IdVille"});
-  Ville.hasMany(Fournisseur, { as: "Fournisseurs", foreignKey: "IdVille"});
-  Utilisateur.belongsTo(Ville, { as: "IdVille_Ville", foreignKey: "IdVille"});
-  Ville.hasMany(Utilisateur, { as: "Utilisateurs", foreignKey: "IdVille"});
-
 }

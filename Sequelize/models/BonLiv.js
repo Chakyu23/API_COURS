@@ -57,6 +57,10 @@ export const BonLiv = DB_Main.define('BonLiv', {
     DateLivraison: {
       type: DataTypes.DATEONLY,
       allowNull: true
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
   DB_Main,

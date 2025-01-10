@@ -33,6 +33,10 @@ export const MSG = DB_Main.define('MSG', {
         model: 'Utilisateur',
         key: 'IdUtilisateur'
       }
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
   DB_Main,

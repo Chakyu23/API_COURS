@@ -18,13 +18,17 @@ export const Fournisseur = DB_Main.define('Fournisseur', {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    IdVille: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Ville',
-        key: 'IdVille'
-      }
+    Ville: {
+        type: DataTypes.STRING(50),
+        allowNull: true
+    },
+    CodePostal: {
+        type: DataTypes.STRING(5),
+        allowNull: true
+    },
+    ISO_Pays: {
+        type: DataTypes.CHAR(2),
+        allowNull: true
     },
     IdContactSociete: {
       type: DataTypes.INTEGER,
@@ -41,6 +45,10 @@ export const Fournisseur = DB_Main.define('Fournisseur', {
         model: 'Utilisateur',
         key: 'IdUtilisateur'
       }
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
   DB_Main,

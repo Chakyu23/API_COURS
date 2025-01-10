@@ -41,6 +41,10 @@ export const Article = DB_Main.define('Article', {
         model: 'TVA',
         key: 'IdTVA'
       }
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
   DB_Main,

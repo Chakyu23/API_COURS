@@ -38,14 +38,6 @@ export const Utilisateur = DB_Main.define('Utilisateur', {
     type: DataTypes.STRING(32),
     allowNull: false
   },
-  IdVille: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'Ville',
-      key: 'IdVille'
-    }
-  },
   IdGroupe: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -53,6 +45,22 @@ export const Utilisateur = DB_Main.define('Utilisateur', {
       model: 'Groupe',
       key: 'IdGroupe'
     }
+  },
+  Ville: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
+  CodePostal: {
+    type: DataTypes.STRING(5),
+    allowNull: false
+  },
+  ISO_Pays: {
+    type: DataTypes.CHAR(2),
+    allowNull: true
+  },
+  Suppr: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true
   }
 }, {
   DB_Main,

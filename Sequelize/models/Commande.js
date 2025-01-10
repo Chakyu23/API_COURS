@@ -21,6 +21,10 @@ export const Commande = DB_Main.define('Commande', {
         model: 'Utilisateur',
         key: 'IdUtilisateur'
       }
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
   DB_Main,

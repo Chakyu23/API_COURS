@@ -37,6 +37,10 @@ export const Produit = DB_Main.define('Produit', {
         model: 'Article',
         key: 'IdArticle'
       }
+    },
+    Suppr: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
   }, {
     DB_Main,
