@@ -35,6 +35,6 @@ app.use('/', (req, res)=> {
 });
 
 app.listen(process.env.LISTEN_PORT, ()=>{
-    console.log("Server started on port 8080");
+    console.log("Server started on port " + process.env.LISTEN_PORT);
 })
 
