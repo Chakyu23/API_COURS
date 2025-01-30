@@ -62,10 +62,6 @@ RouterUsers.post('/users', jwtMiddleware, async(req, res) => {
             });
         });
 
-
-
-
-
         const newUser = await Utilisateur.create({
             Nom : Nom,
             Prenom : Prenom,

@@ -34,7 +34,7 @@ app.use('/', (req, res)=> {
     return res.json("I'm the backend !");
 });
 
-app.listen(3000, ()=>{
-    console.log("Server started on port 3000");
+app.listen(process.env.LISTEN_PORT, ()=>{
+    console.log("Server started on port 8080");
 })
 
