@@ -8,10 +8,14 @@ import {RouterMessages} from "./router/RouterMessages.js";
 import {RouterDeliveryTours} from "./router/RouterDeliveryTour.js";
 import {RouterAssignmentRequests} from "./router/RouterAssignmentRequests.js";
 import {initRel} from "./Sequelize/models/init-Rel.js";
-
+import {CORS_OPTIONS} from "./Const.js";
+import { setupSocket } from "./socket.js";
+import http from 'http'
 
 const app = express();
-app.use(cors());
+const server = http.createServer(app);
+
+app.use(cors(CORS_OPTIONS));
 app.use(express.json());
 
 app.use(RouterUsers);
@@ -29,6 +33,8 @@ try {
 } catch (error) {
     console.error('Unable to connect to the database:', error);
 }
+
+setupSocket(server);
 
 app.use('/', (req, res)=> {
     return res.json("I'm the backend !");
