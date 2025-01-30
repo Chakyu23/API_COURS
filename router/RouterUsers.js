@@ -2,12 +2,28 @@ import express from 'express';
 import {jwtMiddleware} from "../Middle_Jwt.js";
 import jwt from "jsonwebtoken";
 import {Utilisateur} from "../Sequelize/models/Utilisateur.js";
+import {QueryTypes} from "sequelize";
+import {DB_Main} from "../Sequelize/DB_Main.js";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 export const RouterUsers = express.Router();
+
+async function getNextUserId() {
+    try {
+        const [results, metadata] = await DB_Main.query(
+            "SELECT (MAX(IdUtilisateur) + 1) AS NewID FROM Sch_User.Utilisateur"
+        );
+
+        // Récupération de la valeur
+        return results[0].NewID ?? 1;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
 
 // POST - /login
 RouterUsers.post('/login', (req, res) => {
@@ -29,7 +45,7 @@ RouterUsers.post('/login', (req, res) => {
         return res.status(401).json({message: 'Identifiants invalides.'});
     }
     catch (err) {
-        console.log(err);
+        return res.status(501).json({message: 'Identifiants invalides.'});
     }
 });
 
@@ -39,30 +55,33 @@ RouterUsers.post('/register', async(req, res) => {
         const { username, password } = req.body;
     }
     catch(err) {
-        console.log(err);
+        return res.status(501).json(err);
     }
 });
 
 // POST - /users
 RouterUsers.post('/users', jwtMiddleware, async(req, res) => {
     try {
-        const {Nom, Prenom, NumTelephone, Email, AddresseFact, AddresseLivr, Login, Mdp, Ville, IdGroupe} = req.body;
+        const {Nom, Prenom, NumTelephone, Email, AddresseFact, AddresseLivr, Login, Mdp, Ville, IdGroupe, CP, ISO_Pays} = req.body;
+        let Salted_MDP = ""
 
-        bcrypt.genSalt(process.env.SALT_ROUNDS, (err, salt) => {
+        await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS, 10), (err, salt) => {
             if (err) {
                 return res.status(501).json(err);
             }
-            let Salted_MDP = ""
             bcrypt.hash(Mdp, salt, (err, hash) => {
                 if (err) {
                     // Handle error
                     return res.status(501).json(err);
                 }
-                Salted_MDP = hash;
+                Salted_MDP = hash
             });
         });
+        console.log(Salted_MDP);
+        let id = await getNextUserId()
 
         const newUser = await Utilisateur.create({
+            IdUtilisateur : id,
             Nom : Nom,
             Prenom : Prenom,
             NumTelephone : NumTelephone,
@@ -71,18 +90,22 @@ RouterUsers.post('/users', jwtMiddleware, async(req, res) => {
             AddresseLivr : AddresseLivr,
             Login : Login,
             Mdp : Salted_MDP,
-            IdVille : IdVille,
-            IdGroupe : IdGroupe
+            Ville : Ville,
+            CodePostal : CP,
+            ISO_Pays : ISO_Pays,
+            IdGroupe : IdGroupe,
+            Suppr : false
         })
-        return res.status(201).json(newUser.IdUtilisateur);
+        return res.status(201).json(newUser);
     }
     catch(err) {
+        console.log(err);
         return res.status(501).json(err);
     }
 });
 
-// GET - /users/{role}
-RouterUsers.get('/users/:RoleID', jwtMiddleware, async(req, res) => {
+// GET - /users/roles/{role}
+RouterUsers.get('/users/Roles/:RoleID', jwtMiddleware, async(req, res) => {
     try {
         const { RoleID } = req.params;
     }
@@ -95,9 +118,20 @@ RouterUsers.get('/users/:RoleID', jwtMiddleware, async(req, res) => {
 RouterUsers.get('/users/:userID', jwtMiddleware, async(req, res) => {
     try {
         const { userID } = req.params;
+                const user = await Utilisateur.findOne({
+            where: { IdUtilisateur: userID }
+        });
+        // 🔹 Vérifier si l'utilisateur existe
+        if (!user) {
+            return res.status(404).json("Utilisateur non trouvé");
+        }
+
+        // 🔹 Retourner l'utilisateur au format JSON
+        return res.status(201).json(user);
+
     }
     catch(err) {
-        console.log(err);
+        return res.status(501).json(err);
     }
 });
 
