@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { Server } from 'socket.io';
 import cors from 'cors';
 
+import {LauchDAB} from "./dab.js";
 import {RouterUsers} from './router/RouterUsers.js';
 // import {RouterProducts} from "./router/RouterProducts.js";
 // import {RouterOrders} from "./router/RouterOrders.js";
@@ -40,7 +41,13 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
+        const cmd = msg.split(' ');
+
+        if (cmd[0] === "/dab") {
+            io.emit('chat message', LauchDAB(cmd[1], cmd[2]));
+        } else {
+            io.emit('chat message', msg);
+        }
         console.log('message: ' + msg);
     });
     socket.on('disconnect', () => {
