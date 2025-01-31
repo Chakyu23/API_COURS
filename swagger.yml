@@ -1,0 +1,182 @@
+swagger: '2.0'
+info:
+  contact: {}
+  title: TP_API
+  version: 1.0.0
+basePath: /
+paths:
+  /login:
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            properties:
+              password:
+                example: password
+                type: string
+              username:
+                example: admin
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Connexion
+      description: Login
+      operationId: login
+      summary: Login
+  /users:
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: ''
+          type: string
+        - in: body
+          name: body
+          schema:
+            properties:
+              AddresseFact:
+                example: 252 route de clisson
+                type: string
+              AddresseLivr:
+                example: ''
+                type: string
+              CP:
+                example: '44120'
+                type: string
+              Email:
+                example: yannbourgeron@gmail.com
+                type: string
+              ISO_Pays:
+                example: FR
+                type: string
+              IdGroupe:
+                example: '6'
+                type: string
+              Login:
+                example: Chakyu23
+                type: string
+              Mdp:
+                example: Alpha1
+                type: string
+              Nom:
+                example: Bourgeron
+                type: string
+              NumTelephone:
+                example: '0652291490'
+                type: string
+              Prenom:
+                example: Yann
+                type: string
+              Ville:
+                example: Vertou
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Connected
+        - USER
+      description: Create User
+      operationId: createUser
+      summary: Create User
+  /users/{idUser}:
+    parameters:
+      - in: path
+        name: idUser
+        required: true
+        type: string
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Connected
+        - USER
+      description: Delete User
+      operationId: deleteUser
+      summary: Delete User
+    get:
+      consumes:
+        - text/plain
+      parameters:
+        - in: body
+          name: body
+          schema:
+            format: binary
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Connected
+        - USER
+      description: Get User
+      operationId: getUser
+      summary: Get User
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            properties:
+              AddresseFact:
+                example: 252 route de clisson
+                type: string
+              AddresseLivr:
+                example: 258 route de clisson
+                type: string
+              CP:
+                example: '44120'
+                type: string
+              Email:
+                example: yannbourgeron23@gmail.com
+                type: string
+              ISO_Pays:
+                example: FR
+                type: string
+              IdGroupe:
+                example: '6'
+                type: string
+              Login:
+                example: Chakyu23
+                type: string
+              Mdp:
+                example: Alpha1
+                type: string
+              Nom:
+                example: Bourgeron
+                type: string
+              NumTelephone:
+                example: '0652291490'
+                type: string
+              Prenom:
+                example: Yann
+                type: string
+              Ville:
+                example: Vertou
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Connected
+        - USER
+      description: Update User
+      operationId: updateUser
+      summary: Update User
+tags:
+  - name: Connected
+  - name: USER
+  - name: Connexion
