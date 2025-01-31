@@ -20,6 +20,7 @@ const app = express();
 
 
 app.use(cors());
+app.use(express.json());
 app.use(RouterUsers);
 // app.use(RouterProducts);
 // app.use(RouterOrders);
